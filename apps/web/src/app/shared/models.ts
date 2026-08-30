@@ -21,6 +21,7 @@ export interface ShowCard {
   photoUrl: string;
   freeCount: number;
   totalSeats: number;
+  fromPriceCents: number;
 }
 
 export interface SeatView {

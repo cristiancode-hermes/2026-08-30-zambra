@@ -33,7 +33,7 @@ import { eur, madridWhen, PALO_LABEL, ShowCard } from '../shared/models';
                 <span class="palo">{{ palo(s.palo) }}</span>
                 <strong>{{ s.title }}</strong>
                 <span class="muted">{{ s.company }} · {{ when(s.startsAt) }}</span>
-                <span class="free">{{ s.freeCount }} libres · desde {{ money(4500) }}</span>
+                <span class="free">{{ s.freeCount }} libres · desde {{ money(s.fromPriceCents) }}</span>
               </div>
             </a>
           }

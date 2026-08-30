@@ -210,6 +210,15 @@ describe('Zambra', () => {
     expect(detail.totalSeats).toBe(5);
   });
 
+  it('desde de cartelera es min(priceCents) de zonas, no un literal', async () => {
+    const list = await shows.list();
+    const row = list.find((s: { id: string }) => s.id === show.id);
+    const detail = await shows.detail(show.id);
+    expect(row.fromPriceCents).toBe(1800);
+    expect(detail.fromPriceCents).toBe(1800);
+    expect(row.fromPriceCents).not.toBe(4500);
+  });
+
   it('checkout atómico cobra y marca sold', async () => {
     const paid = await orders.checkout(alice.id, {
       showId: show.id,

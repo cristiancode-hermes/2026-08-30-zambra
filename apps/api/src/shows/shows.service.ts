@@ -25,7 +25,8 @@ export class ShowsService {
       .where('s.startsAt >= :from AND s.startsAt <= :to', { from, to })
       .orderBy('s.startsAt', 'ASC')
       .getMany();
-    return this.withFreeCounts(rows);
+    const fromPriceCents = await this.minZonePriceCents();
+    return this.withFreeCounts(rows, fromPriceCents);
   }
 
   async detail(id: string) {
@@ -36,8 +37,14 @@ export class ShowsService {
       relations: { seat: { zone: true } },
     });
     const freeCount = seats.filter((s) => s.status === 'free').length;
+    const seatPrices = seats
+      .map((ss) => ss.seat?.zone?.priceCents)
+      .filter((n): n is number => typeof n === 'number');
+    const fromPriceCents = seatPrices.length
+      ? Math.min(...seatPrices)
+      : await this.minZonePriceCents();
     return {
-      ...this.serializeShow(show, freeCount, seats.length),
+      ...this.serializeShow(show, freeCount, seats.length, fromPriceCents),
       seats: seats.map((ss) => ({
         showSeatId: ss.id,
         seatId: ss.seatId,
@@ -62,7 +69,13 @@ export class ShowsService {
     return this.addons.find({ order: { priceCents: 'ASC' } });
   }
 
-  private async withFreeCounts(rows: Show[]) {
+  private async minZonePriceCents(): Promise<number> {
+    const zones = await this.zones.find();
+    if (!zones.length) return 0;
+    return Math.min(...zones.map((z) => z.priceCents));
+  }
+
+  private async withFreeCounts(rows: Show[], fromPriceCents: number) {
     if (!rows.length) return [];
     const ids = rows.map((r) => r.id);
     const seats = await this.showSeats.find({ where: { showId: In(ids) } });
@@ -76,11 +89,11 @@ export class ShowsService {
     }
     return rows.map((s) => {
       const b = byShow.get(s.id) || { free: 0, total: 0 };
-      return this.serializeShow(s, b.free, b.total);
+      return this.serializeShow(s, b.free, b.total, fromPriceCents);
     });
   }
 
-  serializeShow(s: Show, freeCount: number, totalSeats: number) {
+  serializeShow(s: Show, freeCount: number, totalSeats: number, fromPriceCents: number) {
     return {
       id: s.id,
       palo: s.palo,
@@ -92,6 +105,7 @@ export class ShowsService {
       notes: s.notes,
       freeCount,
       totalSeats,
+      fromPriceCents,
     };
   }
 }
