@@ -360,7 +360,15 @@ p { text-wrap: pretty; max-width: 70ch; }
 @media (max-width: 768px) {
   .auth-split { grid-template-columns: 1fr; }
   .auth-visual { display: none; }
-  .nav-links { display: none; }
+  .site-header { flex-wrap: wrap; }
+  .brand { order: 1; }
+  .nav-actions { order: 2; margin-left: auto; }
+  .nav-links {
+    display: flex;
+    order: 3;
+    flex: 1 0 100%;
+    justify-content: center;
+  }
   .seat-btn { width: 40px; height: 40px; margin-left: -20px; margin-top: -20px; font-size: 0.55rem; }
 }
 

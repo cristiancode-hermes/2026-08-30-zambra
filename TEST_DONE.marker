@@ -1,0 +1,7 @@
+QA testing complete for 2026-08-30
+Project: zambra
+Build: ✅ Angular 22 ng build + NestJS tsc
+Tests: 19/19 Jest + 24 endpoint smoke + 25/25 browser
+New tests: existing coverage adequate (19)
+Issues: 0 critical (seed UNIQUE codes + mobile nav wrap + staff readyWait fixed in QA)
+Published: ✅ Caddy (zambra.proyectos.cristiancode.dev), ✅ Portfolio (es.ts+en.ts+pt.ts)
