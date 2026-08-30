@@ -260,14 +260,14 @@ export class SeedService implements OnModuleInit {
     const future = showRows.find((s) => s.startsAt.getTime() > Date.now() + 26 * 3600 * 1000) || showRows[showRows.length - 1];
 
     const candilSeats = seatRows.filter((s) => s.label.startsWith('C1'));
-    await this.placeOrder(demo, past, candilSeats, 'used', origin);
+    await this.placeOrder(demo, past, candilSeats, 'used', origin, 'ZAMBDEMO');
     const anillo = seatRows.filter((s) => s.label.startsWith('A1')).slice(0, 2);
-    await this.placeOrder(demo, future, anillo, 'paid', origin);
+    await this.placeOrder(demo, future, anillo, 'paid', origin, 'ZAMBPAGO');
 
     const rafaSeats = seatRows.filter((s) => s.label.startsWith('G-')).slice(0, 1);
     const otherUser = await this.users.findOne({ where: { username: 'rafa' } });
     if (otherUser && rafaSeats.length) {
-      await this.placeOrder(otherUser, future, rafaSeats, 'paid', origin);
+      await this.placeOrder(otherUser, future, rafaSeats, 'paid', origin, 'ZAMBRAFA');
     }
 
     await this.reviews.save({
@@ -286,8 +286,8 @@ export class SeedService implements OnModuleInit {
     seats: Seat[],
     status: 'paid' | 'used',
     origin: string,
+    code: string,
   ) {
-    const code = status === 'used' ? 'ZAMBDEMO' : 'ZAMBPAGO';
     const qrUrl = `${origin}/entrada/${code}`;
     const raw = await QRCode.toString(qrUrl, { type: 'svg', margin: 1, width: 240 });
     const qrSvg = raw.replace('</svg>', `<desc>${qrUrl}</desc></svg>`);

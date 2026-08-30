@@ -42,6 +42,15 @@ interface Occ {
             >
               <title>{{ r.title }} · {{ when(r.date) }} · {{ r.total - r.free }}/{{ r.total }} ({{ r.pct }}%)</title>
             </rect>
+            @if (i % 3 === 0) {
+              <text
+                [attr.x]="barX(i) + barW() / 2"
+                y="258"
+                font-size="9"
+                text-anchor="middle"
+                fill="currentColor"
+              >{{ shortDate(r.date) }}</text>
+            }
           }
         </svg>
         <ul>
@@ -92,5 +101,13 @@ export class AdminPage implements OnInit {
 
   barY(pct: number): number {
     return 240 - (pct / 100) * 224;
+  }
+
+  shortDate(iso: string): string {
+    return new Intl.DateTimeFormat('es-ES', {
+      timeZone: 'Europe/Madrid',
+      day: 'numeric',
+      month: 'short',
+    }).format(new Date(iso));
   }
 }

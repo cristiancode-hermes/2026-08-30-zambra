@@ -10,6 +10,10 @@ export class AuthService {
   private readonly router = inject(Router);
   readonly user = signal<AuthUser | null>(null);
   readonly ready = signal(false);
+  private readyResolve!: () => void;
+  readonly readyWait = new Promise<void>((r) => {
+    this.readyResolve = r;
+  });
 
   constructor() {
     const token = this.getToken();
@@ -18,8 +22,13 @@ export class AuthService {
         this.loadProfile().catch(() => this.logout(false));
       });
     } else {
-      this.ready.set(true);
+      this.markReady();
     }
+  }
+
+  private markReady() {
+    this.ready.set(true);
+    this.readyResolve();
   }
 
   getToken(): string | null {
@@ -39,7 +48,7 @@ export class AuthService {
       const res = await firstValueFrom(this.http.get<{ user: AuthUser }>(`${API}/auth/me`));
       this.user.set(res.user);
     } finally {
-      this.ready.set(true);
+      this.markReady();
     }
   }
 
