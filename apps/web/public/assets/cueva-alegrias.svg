@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+  <rect width="1200" height="800" fill="#201614"/>
+  <rect x="0" y="520" width="1200" height="280" fill="#161214"/>
+  <ellipse cx="600" cy="500" rx="180" ry="50" fill="#2A1C16"/>
+  <circle cx="320" cy="240" r="40" fill="#E2C48A" opacity="0.7"/>
+  <circle cx="900" cy="200" r="28" fill="#8A301C"/>
+  <path d="M200 520 L600 220 L1000 520" fill="none" stroke="#6B4A0C" stroke-width="3"/>
+  <text x="70" y="120" fill="#F2EDEF" font-family="Georgia, serif" font-size="60">cal</text>
+  <text x="70" y="190" fill="#E2C48A" font-family="Georgia, serif" font-size="26">alegrías</text>
+</svg>

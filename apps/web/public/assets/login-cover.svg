@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1400" preserveAspectRatio="xMidYMid slice">
+  <rect width="900" height="1400" fill="#161214"/>
+  <path d="M0 1400 Q180 700 420 820 T900 640 V1400 Z" fill="#2A1A1C"/>
+  <ellipse cx="450" cy="980" rx="240" ry="80" fill="#0E0C0D"/>
+  <circle cx="220" cy="360" r="36" fill="#E2C48A" opacity="0.8"/>
+  <circle cx="700" cy="280" r="22" fill="#8A301C"/>
+  <text x="60" y="160" fill="#F2EDEF" font-family="Georgia, serif" font-size="72">Zambra</text>
+  <text x="60" y="230" fill="#E2C48A" font-family="Georgia, serif" font-size="28">tablao en cueva</text>
+</svg>

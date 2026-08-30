@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+  <rect width="1200" height="800" fill="#1C1410"/>
+  <circle cx="200" cy="180" r="90" fill="#8A301C" opacity="0.35"/>
+  <circle cx="980" cy="140" r="70" fill="#6B1C26" opacity="0.4"/>
+  <ellipse cx="600" cy="500" rx="300" ry="90" fill="#161214"/>
+  <rect x="260" y="470" width="80" height="40" fill="#3A2A22"/>
+  <rect x="860" y="470" width="80" height="40" fill="#3A2A22"/>
+  <path d="M420 430 Q600 300 780 430" fill="none" stroke="#E2C48A" stroke-width="6"/>
+  <text x="70" y="120" fill="#F2EDEF" font-family="Georgia, serif" font-size="60">patio</text>
+  <text x="70" y="190" fill="#E2C48A" font-family="Georgia, serif" font-size="26">bulerías</text>
+</svg>

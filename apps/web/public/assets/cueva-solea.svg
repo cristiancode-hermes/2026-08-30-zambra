@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+  <rect width="1200" height="800" fill="#1A1214"/>
+  <path d="M0 800 Q200 420 400 500 T800 380 T1200 520 V800 Z" fill="#2A1C1E"/>
+  <ellipse cx="600" cy="520" rx="220" ry="70" fill="#161214"/>
+  <rect x="520" y="430" width="160" height="90" rx="8" fill="#3A2420"/>
+  <circle cx="430" cy="300" r="18" fill="#E2C48A" opacity="0.85"/>
+  <circle cx="780" cy="280" r="14" fill="#8A301C" opacity="0.9"/>
+  <text x="80" y="120" fill="#F2EDEF" font-family="Georgia, serif" font-size="64">cueva</text>
+  <text x="80" y="190" fill="#E2C48A" font-family="Georgia, serif" font-size="28">soleá de umbral</text>
+</svg>

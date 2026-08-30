@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+  <rect width="1200" height="800" fill="#141012"/>
+  <path d="M0 0 H1200 V800 H0 Z" fill="#141012"/>
+  <path d="M80 800 Q300 360 600 440 T1120 300 V800 Z" fill="#24181A"/>
+  <ellipse cx="640" cy="560" rx="260" ry="80" fill="#0E0C0D"/>
+  <path d="M500 420 L640 240 L780 420 Z" fill="#6B1C26"/>
+  <circle cx="640" cy="300" r="22" fill="#E2C48A"/>
+  <text x="70" y="110" fill="#F2EDEF" font-family="Georgia, serif" font-size="60">pozo</text>
+  <text x="70" y="180" fill="#E8A090" font-family="Georgia, serif" font-size="26">seguiriyas</text>
+</svg>
